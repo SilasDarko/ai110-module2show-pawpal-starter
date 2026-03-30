@@ -1,43 +1,51 @@
-# PawPal+ (Module 2 Project)
+🐾 PawPal+ — Smart Pet Care Management System
 
-You are building **PawPal+**, a Streamlit app that helps a pet owner plan care tasks for their pet.
+- PawPal+ helps pet owners manage daily routines for their furry friends — feedings, walks, medications, and appointments — using algorithmic scheduling logic and a clean Streamlit UI.
 
-## Scenario
+🚀 Getting Started
+Prerequisites
+bash
+pip install streamlit pytest
+Run the App
+bash
+streamlit run app.py
+Run the CLI Demo
+bash
+python main.py
 
-A busy pet owner needs help staying consistent with pet care. They want an assistant that can:
+✨ Features
+Add Pets & Tasks — Register multiple pets and schedule tasks with time, frequency, and due date
+Sorting by Time — Tasks are automatically sorted chronologically using Python's sorted() with a lambda key
+Filtering — View tasks by pet name or completion status
+Conflict Detection — The Scheduler warns you when two tasks are scheduled at the same time
+Recurring Tasks — Daily and weekly tasks automatically reschedule when marked complete using timedelta
+Persistent UI State — Streamlit session_state keeps your data alive across interactions
 
-- Track pet care tasks (walks, feeding, meds, enrichment, grooming, etc.)
-- Consider constraints (time available, priority, owner preferences)
-- Produce a daily plan and explain why it chose that plan
+🏗️ System Architecture
+Class	Responsibility
+Task	Single care activity with time, frequency, and completion state
+Pet	Holds pet info and a list of Tasks
+Owner	Manages multiple Pets and aggregates their tasks
+Scheduler	Sorting, filtering, conflict detection, and recurrence logic
 
-Your job is to design the system first (UML), then implement the logic in Python, then connect it to the Streamlit UI.
+🧪 Testing PawPal+
+bash
+python -m pytest
+The test suite covers:
 
-## What you will build
+Task completion toggling
+Task count after additions
+Chronological sort correctness
+Conflict detection (same-time tasks)
+Daily and weekly recurrence logic
+Edge cases (no tasks, unique times, one-time tasks)
+Confidence Level: All core behaviors are verified with dedicated tests and edge cases.
 
-Your final app should:
 
-- Let a user enter basic owner + pet info
-- Let a user add/edit tasks (duration + priority at minimum)
-- Generate a daily schedule/plan based on constraints and priorities
-- Display the plan clearly (and ideally explain the reasoning)
-- Include tests for the most important scheduling behaviors
+🤖 Smarter Scheduling
+PawPal+'s Scheduler class goes beyond a simple task list:
 
-## Getting started
-
-### Setup
-
-```bash
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-```
-
-### Suggested workflow
-
-1. Read the scenario carefully and identify requirements and edge cases.
-2. Draft a UML diagram (classes, attributes, methods, relationships).
-3. Convert UML into Python class stubs (no logic yet).
-4. Implement scheduling logic in small increments.
-5. Add tests to verify key behaviors.
-6. Connect your logic to the Streamlit UI in `app.py`.
-7. Refine UML so it matches what you actually built.
+Time-based sorting keeps your day organized automatically
+Conflict warnings surface scheduling problems before they cause missed care
+Recurrence automation removes the need to manually re-add repeating tasks
+All logic lives in pawpal_system.py — fully testable and UI-independent
